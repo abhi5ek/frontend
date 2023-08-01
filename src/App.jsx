@@ -4,6 +4,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import EvenetHandling from './components/EvenetHandling';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route element={ <Home /> } path='Home' />
             <Route element={ <Login /> } path='Login' />
             <Route element={ <Signup /> } path='Signup' />
+            <Route element={ <EvenetHandling /> } path='event' />
           </Routes>
        </BrowserRouter>
      
