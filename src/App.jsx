@@ -6,6 +6,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import EvenetHandling from './components/EvenetHandling';
 import StateManagement from './components/StateManagement';
+import ToDoList from './components/ToDoList';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route element={ <Signup /> } path='Signup' />
             <Route element={ <EvenetHandling /> } path='event' />
             <Route element={ <StateManagement /> } path='state' />
+            <Route element={ <ToDoList /> } path='todo' />
           </Routes>
        </BrowserRouter>
      
