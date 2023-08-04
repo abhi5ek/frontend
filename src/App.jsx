@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import EvenetHandling from './components/EvenetHandling';
 import StateManagement from './components/StateManagement';
 import ToDoList from './components/ToDoList';
+import ChatBox from './components/ChatBox';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
 
           <Navbar/>
 
-          <Routes>
+          <Routes>  
             <Route element={ <Home /> } path='/' />
             <Route element={ <Home /> } path='Home' />
             <Route element={ <Login /> } path='Login' />
@@ -27,6 +28,8 @@ function App() {
             <Route element={ <EvenetHandling /> } path='event' />
             <Route element={ <StateManagement /> } path='state' />
             <Route element={ <ToDoList /> } path='todo' />
+            <Route element={ <ChatBox /> } path='chat' />
+
           </Routes>
        </BrowserRouter>
      
