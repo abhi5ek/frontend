@@ -8,6 +8,7 @@ import EvenetHandling from './components/EvenetHandling';
 import StateManagement from './components/StateManagement';
 import ToDoList from './components/ToDoList';
 import ChatBox from './components/ChatBox';
+import ListProduct from './components/ListProduct';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
             <Route element={ <StateManagement /> } path='state' />
             <Route element={ <ToDoList /> } path='todo' />
             <Route element={ <ChatBox /> } path='chat' />
+            <Route element={ <ListProduct /> } path='list' />
+  
 
           </Routes>
        </BrowserRouter>

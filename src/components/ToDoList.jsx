@@ -25,6 +25,13 @@ const ToDoList = () => {
     }
 
 
+    const completeTodo = (index) => {
+       const temp = todoList;
+       temp[index].completed = true;
+       setTodoList([...temp]);
+    }
+
+
   return (
     <div>
           <div className='container'>
@@ -38,10 +45,12 @@ const ToDoList = () => {
                    <div className='card-body'> 
                         <ul>
                         {  todoList.map( (obj , index) => { 
-                            return <li className='list-group-item'>
-                            <h3>{obj.text}</h3>
+                            return <li className='list-group-item' key={index}>
+                            { obj.completed ? <span className="badge bg-success"> completed</span> : <span className="badge bg-warning"> pending</span>}  
+                            <h3 style={{ textDecoration : obj.completed ? 'line-through' : null}}>{obj.text}</h3>
+                            
                             <button onClick={ () => { deleteTodo(index)}} className='btn btn-danger'>Delete</button>
-                            <button className='btn btn-primary ms-2'>Complete Task</button>
+                            <button onClick={ () => { completeTodo(index)}} className='btn btn-primary ms-2'>Complete Task</button>
                             </li>;
                         } ) }
                         </ul>
@@ -54,4 +63,4 @@ const ToDoList = () => {
   )
 }
 
-export default ToDoList
+export default ToDoList;
