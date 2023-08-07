@@ -4,6 +4,10 @@ import smartphones from './dummyData';
 const ListProduct = () => {
     const [productData, setProductData] = useState(smartphones);
 
+    const [price, setprice] = useState(1000); 
+    <h5>{price}</h5>
+
+
     const brands = [ 'Samsung' , 'OnePlus' , 'Apple' , 'MotoRola' ];
 
     const model = [ 'Galaxy S23' , 'Iphone 14' , 'OnePlus 11R' , 'g14' ,'g62' , 'Galaxy A54'];
@@ -20,7 +24,7 @@ const ListProduct = () => {
                         <h3>{phone.model}</h3>
                         <h2>₹{phone.price}</h2>
                         <button className='btn btn-primary'>Buy</button>
-                        <button className='btn btn-secondary ms-3'>Cart</button>
+                        <button className='btn btn-secondary'>Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -50,6 +54,15 @@ const ListProduct = () => {
             smartphones.filter((phone) => {
                 return phone.model === search;
             })
+        );
+    };
+
+    const filterPrice = (e) => {
+        const search = e.target.value;
+        setProductData(
+            smartphones.filter((phone) => {
+                return phone.price < search;
+            })
         )
     }
 
@@ -61,11 +74,11 @@ const ListProduct = () => {
              <h1 className='text-center'>Product List Page</h1>
              <input onChange={searchProduct} type="text" className='form-control form-control-lg' placeholder='Search Product Name...'/>
            </div>
-
-
         </header>
+
+
            <div className='row'>
-             <div className='col-2'>
+             <div className='col-md-2'>
                 <div className='card mt-4'>
                     
                     <div className='card-header'>
@@ -78,21 +91,35 @@ const ListProduct = () => {
                           {brands.map((brand) => (
                                <option value={brand}>{brand}</option>
                           ))}
-                          </select>
+                          </select>  <br />
+                          
+                          
                           <label htmlFor="model"><h4>By Model</h4></label>
                           <select onChange={filtermodel}>
                           {model.map((model) => (
                                <option value={model}>{model}</option>
                           ))}
-                          </select>
+                          </select>  <br />
+
+                          <label htmlFor="price"><h4>By Price</h4></label>
+                          <input type="range" min={1000} max={200000} step={1000} onChange={filterPrice} />
+        
                     </div>
                 </div>
              </div>
-             <div className='col'>
+            
+            
+            
+            
+             <div className='col-md-10'>
                 <div className='row'>
                     {displayProducts()}
                 </div>
              </div>
+             
+             
+             
+             
              {/* <div className='col-2'>
                 <div className='card mt-4'>
                     <div className='card-body'>

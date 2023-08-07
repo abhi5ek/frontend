@@ -1,38 +1,44 @@
+import { useFormik } from 'formik';
 import React from 'react'
 
 const Login = () => {
+
+  //Initializing formik
+  const loginform = useFormik({
+    initialValues: {
+      email : "",
+      password : ""
+    },
+    onSubmit : ( values ) => { 
+      console.log(values) ;
+      // write code to submit form to server
+    }
+  });
+
   return (
-    <div className='container d-flex justify-content-center mt-5'>
+    <div>
+    <div className="w-25">
+      <div className="card">
+        <div className="card-body">
+          <h3 className="text-center">Login Form</h3>
+          <hr />
 
-      <div className='card bg-primary d-flex align-items-center col-md-4 text-white fw-bold'>
-           
-           <div className='card-header'>
+          <form onSubmit={loginform.handleSubmit}>
+            <label htmlFor="">Email Address</label>
+            <input type="email" className="form-control mb-3" name="email" onChange={loginform.handleChange} value={loginform.values.email}/>
 
-             <h1 style={{alignItems:"center"}}>Login</h1> 
+            <label htmlFor="">Password</label>
+            <input type="password" className="form-control mb-3" name="password" onChange={loginform.handleChange} value={loginform.values.password} />
 
-           </div>
-
-        <div >
-
-          <label htmlFor="email">Email</label>  <br />
-          <input type="email" />
-
-          <br /><br />
-          
-          
-          <label htmlFor="password">Password</label>  <br />
-          <input type="password" />
-
-          <br /><br />
-
-          <button className='mybtn btn-success align-items-center mb-4'>Login</button>
-
+            <button className="btn btn-primary w-100 mt-5">Submit</button>
+          </form>
         </div>
-
       </div>
-
     </div>
-  )
-}
+  </div>
+);
+};
+
+    
 
 export default Login;
