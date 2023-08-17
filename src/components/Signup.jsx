@@ -1,4 +1,3 @@
-
 import { useFormik } from 'formik';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
@@ -24,11 +23,11 @@ const Signup = () => {
         header: {
           'Contain-type' : 'application/json'
         }
-      })
+      });
 
       console.log(res.status);
 
-      if(res.status == 200){
+      if(res.status === 200){
         Swal.fire({
           icon : 'success',
           title : 'WellDone!',
@@ -53,12 +52,12 @@ const Signup = () => {
       <div className="w-25">
         <div className="card">
           <div className="card-body">
-            <h3 className="text-center">Login Form</h3>
+            <h3 className="text-center">SignUp Form</h3>
             <hr />
 
             <form onSubmit={signupForm.handleSubmit}>
               <label htmlFor="">Name</label>
-              <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.name}</span>
+              {/* <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.name}</span> */}
               <input type="text" className="form-control mb-3" name="name" onChange={signupForm.handleChange} value={signupForm.values.name} />
               
               <label htmlFor="">Email Address</label>

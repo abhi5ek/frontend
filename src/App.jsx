@@ -10,6 +10,7 @@ import ToDoList from './components/ToDoList';
 import ChatBox from './components/ChatBox';
 import ListProduct from './components/ListProduct';
 import Amazon from './components/Amazon';
+import Blog from './components/Blog';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route element={ <ChatBox /> } path='chat' />
             <Route element={ <ListProduct /> } path='list' />
             <Route element={ <Amazon /> } path='amazon' />
+            <Route element={ <Blog /> } path='blog' />
   
 
           </Routes>

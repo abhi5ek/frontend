@@ -66,6 +66,11 @@ const Navbar = () => {
             Amazon
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/blog">
+            Blog
+          </NavLink>
+        </li>
       </ul>
       <form className="d-flex">
         <input
