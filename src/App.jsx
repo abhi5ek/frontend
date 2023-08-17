@@ -9,6 +9,7 @@ import StateManagement from './components/StateManagement';
 import ToDoList from './components/ToDoList';
 import ChatBox from './components/ChatBox';
 import ListProduct from './components/ListProduct';
+import Amazon from './components/Amazon';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route element={ <ToDoList /> } path='todo' />
             <Route element={ <ChatBox /> } path='chat' />
             <Route element={ <ListProduct /> } path='list' />
+            <Route element={ <Amazon /> } path='amazon' />
   
 
           </Routes>

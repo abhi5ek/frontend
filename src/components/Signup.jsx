@@ -1,56 +1,85 @@
+
 import { useFormik } from 'formik';
 import React from 'react'
-import * as Yup from 'yup';
-
-const SignupSchema = Yup.object().shape({
-  firstName: Yup.string().required('FirstName Required'),
-  lastName: Yup.string().required('LastName Required'),
-  email: Yup.string().email('Invalid email').required('Email is Required'),
-});
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
 
-  const signupform = useFormik({
+  const navigate = useNavigate();
+
+  const signupForm = useFormik({
     initialValues: {
-      firstName : "",
-      lastName : "",
+      name : "",
       email : "",
+      password : "",
+      age : ""
     },
-    onSubmit : ( values ) => { 
-      console.log(values)
-    },
-    validationSchema : SignupSchema
+    onSubmit : async ( values ) => {
+      console.log(values);
+
+      const res = await fetch('http://localhost:5000/user/add', {
+        method: 'POST',
+        body: JSON.stringify(values),
+        header: {
+          'Contain-type' : 'application/json'
+        }
+      })
+
+      console.log(res.status);
+
+      if(res.status == 200){
+        Swal.fire({
+          icon : 'success',
+          title : 'WellDone!',
+          text : 'Registered Successfully 😎'
+        })
+        navigate('/login');
+      }else{
+        Swal.fire({
+          icon : 'success',
+          title : 'WellDone!',
+          text : 'Registered Successfully'
+        })
+      }
+
+
+      // write code to submit form to server
+    }
   });
+
   return (
-      <div>
-      
-         <div className='w-25'>
-            <div className='card'>
-              <div className='card-body'> 
-                 <h3 className='text-center'>Signup Form</h3>   <hr />
+    <div>
+      <div className="w-25">
+        <div className="card">
+          <div className="card-body">
+            <h3 className="text-center">Login Form</h3>
+            <hr />
 
-                 <form onSubmit={signupform.handleSubmit}>
-                     <label htmlFor="firstName">firstName</label>  
-                     <span style={{color: 'red', fontSize:'0.7rem', marginLeft: 10}}>{signupform.errors.firstName}</span>
-                     <input type="text" className='form-control mb-3' name="firstName" onChange={signupform.handleChange} value={signupform.values.firstName} /> 
+            <form onSubmit={signupForm.handleSubmit}>
+              <label htmlFor="">Name</label>
+              <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.name}</span>
+              <input type="text" className="form-control mb-3" name="name" onChange={signupForm.handleChange} value={signupForm.values.name} />
+              
+              <label htmlFor="">Email Address</label>
+              <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.email}</span>
+              <input type="email" className="form-control mb-3" name="email" onChange={signupForm.handleChange} value={signupForm.values.email} />
 
-                     <label htmlFor="lastName">lastName</label> 
-                     <span style={{color: 'red', fontSize:'0.7rem', marginLeft: 10}}>{signupform.errors.lastName}</span>
-                     <input type="text" className='form-control mb-3' name="lastName" onChange={signupform.handleChange} value={signupform.values.lastName} />  
+              <label htmlFor="">Password</label>
+              <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.password}</span>
+              <input type="password" className="form-control mb-3" name="password" onChange={signupForm.handleChange} value={signupForm.values.password} />
+              
+              <label htmlFor="">Age</label>
+              <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.age}</span>
+              <input type="number" className="form-control mb-3" name="age" onChange={signupForm.handleChange} value={signupForm.values.age} />
 
-                     <label htmlFor="email">Email</label> 
-                     <span style={{color: 'red', fontSize:'0.7rem', marginLeft: 10}}>{signupform.errors.email}</span>
-                     <input type="text" className='form-control mb-3' name="email" onChange={signupform.handleChange} value={signupform.values.email} /> 
-
-                     <button className='btn btn-success w-100'>submit</button>
-                 </form>
-
-              </div>
-            </div>
-         </div>
+              <button className="btn btn-primary w-100 mt-5">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
-   
-  )
-};
+    </div>
+  );
+}
 
 export default Signup;

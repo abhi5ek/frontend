@@ -69,7 +69,7 @@ const ListProduct = () => {
   return (
     <div className='list_back'>
 
-        <header className='bg-transparent'>
+        <header className='bg-transparent '>
            <div className='container py-5'>
              <h1 className='text-center'>Product List Page</h1>
              <input onChange={searchProduct} type="text" className='form-control form-control-lg' placeholder='Search Product Name...'/>
