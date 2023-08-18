@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react'
+import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 
@@ -17,8 +18,39 @@ const Login = () => {
       email : "",
       password : ""
     },
-    onSubmit : ( values ) => { 
+    onSubmit : async ( values ) => { 
       console.log(values) ;
+
+      const res = await fetch('http://localhost:5000/user/authenticate',{
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers:{
+          'Content-Type' : 'application/json'
+        }
+      });
+
+      console.log(res.status);
+
+      if(res.status === 200){
+        Swal.fire({
+          icon : 'success',
+          title :'Nice',
+          text : 'Logged in Successfully'
+        })
+      }else if(res.status === 401){
+        Swal.fire({
+          icon : 'error',
+          title :'Error',
+          text : 'Email or Password is incorrect'
+        })
+      }else{
+        Swal.fire({
+          icon : 'error',
+          title :'Error',
+          text : 'Something went Wrong'
+        })
+      }
+
       // write code to submit form to server
     },
     validationSchema : LoginSchema

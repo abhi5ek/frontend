@@ -14,18 +14,20 @@ const Signup = () => {
       password : "",
       age : ""
     },
-    onSubmit : async ( values ) => {
+    onSubmit : async ( values,{ resetForm, setSubmitting } ) => {
       console.log(values);
+      setSubmitting(true);
 
       const res = await fetch('http://localhost:5000/user/add', {
         method: 'POST',
         body: JSON.stringify(values),
-        header: {
-          'Contain-type' : 'application/json'
+        headers: {
+          'Content-Type' : 'application/json'
         }
       });
 
       console.log(res.status);
+      setSubmitting(false);
 
       if(res.status === 200){
         Swal.fire({
@@ -72,7 +74,7 @@ const Signup = () => {
               <span style={{color: 'red', fontSize: '0.7em', marginLeft: 10}}>{signupForm.errors.age}</span>
               <input type="number" className="form-control mb-3" name="age" onChange={signupForm.handleChange} value={signupForm.values.age} />
 
-              <button className="btn btn-primary w-100 mt-5">Submit</button>
+              <button disabled={signupForm.isSubmitting} className="btn btn-primary w-100 mt-5">Submit</button>
             </form>
           </div>
         </div>

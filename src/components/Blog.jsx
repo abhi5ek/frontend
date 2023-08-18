@@ -23,8 +23,8 @@ const Blog = () => {
             const res = await fetch('http://localhost:5000/blog/addblog',{
                 method: 'POST',
                 body: JSON.stringify(values),
-                header:{
-                    'Contain-type' : 'application/JSON'
+                headers:{
+                    'Content-type' : 'application/JSON'
                 }
             });
 

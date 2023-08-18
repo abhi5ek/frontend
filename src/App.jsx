@@ -11,6 +11,7 @@ import ChatBox from './components/ChatBox';
 import ListProduct from './components/ListProduct';
 import Amazon from './components/Amazon';
 import Blog from './components/Blog';
+import ManageUser from './components/ManageUser';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route element={ <ListProduct /> } path='list' />
             <Route element={ <Amazon /> } path='amazon' />
             <Route element={ <Blog /> } path='blog' />
+            <Route element={ <ManageUser /> } path='manageuser' />
   
 
           </Routes>
