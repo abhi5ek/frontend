@@ -12,6 +12,8 @@ import ListProduct from './components/ListProduct';
 import Amazon from './components/Amazon';
 import Blog from './components/Blog';
 import ManageUser from './components/ManageUser';
+import ManageProduct from './components/ManageProduct';
+import AddProduct from './components/AddProduct';
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
             <Route element={ <Amazon /> } path='amazon' />
             <Route element={ <Blog /> } path='blog' />
             <Route element={ <ManageUser /> } path='manageuser' />
+            <Route element={ <ManageProduct /> } path='manageproduct' />
+            <Route element={ <AddProduct /> } path='addproduct' />
   
 
           </Routes>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-const ManageUser = () => {
 
-  const [userList, setUserList] = useState([]);
+const ManageProduct = () => {
+
+    const [userList, setUserList] = useState([]);
 
   const fetchUserData = async () => {
-    const res = await fetch('http://localhost:5000/user/getall ');
+    const res = await fetch('http://localhost:5000/product/getProduct ');
     console.log(res.status);
 
     const data = await res.json();
@@ -22,9 +23,9 @@ const ManageUser = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Age</th>
+              <th>Product Name</th>
+              <th>Product Model</th>
+              <th>Price</th>
               <th colSpan={2}>Actions</th>
             </tr>
           </thead>
@@ -33,8 +34,8 @@ const ManageUser = () => {
               userList.map( (user) => ( <tr>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.age}</td>
+                <td>{user.model}</td>
+                <td>{user.price}</td>
                 <td>
                   <button className='btn btn-primary'>Edit</button>
                 </td>
@@ -46,17 +47,18 @@ const ManageUser = () => {
           </tbody>
         </table>
   }
+  
 
   return (
     <div>
-      <h1 className='text-center fw-bold'>Manage User Data</h1>
-      <hr />
+    <h1 className='text-center fw-bold'>Manage User Data</h1>
+    <hr />
 
-      <div className='container'>
-           {displayUserData()}
-      </div>
+    <div className='container'>
+         {displayUserData()}
     </div>
+  </div>
   )
 }
 
-export default ManageUser;
+export default ManageProduct;
