@@ -86,6 +86,11 @@ const Navbar = () => {
             ManageProduct
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/updateuser">
+            Update User
+          </NavLink>
+        </li>
       </ul>
     </div>
   </div>

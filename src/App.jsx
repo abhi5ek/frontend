@@ -14,10 +14,13 @@ import Blog from './components/Blog';
 import ManageUser from './components/ManageUser';
 import ManageProduct from './components/ManageProduct';
 import AddProduct from './components/AddProduct';
+import { Toaster } from 'react-hot-toast';
+import UpdateUser from './components/UpdateUser';
 
 function App() {
   return (
     <div>
+      <Toaster position='top-right' />
        <BrowserRouter>
 
        {/* <Link to="/home">Home</Link> 
@@ -41,6 +44,7 @@ function App() {
             <Route element={ <ManageUser /> } path='manageuser' />
             <Route element={ <ManageProduct /> } path='manageproduct' />
             <Route element={ <AddProduct /> } path='addproduct' />
+            <Route element={ <UpdateUser /> } path='updateuser' />
   
 
           </Routes>

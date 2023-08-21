@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const ManageUser = () => {
 
@@ -12,6 +14,16 @@ const ManageUser = () => {
     console.log(data);
     setUserList(data);
   };
+
+  const deleteUser = async (id) => {
+    const res = await fetch('http://localhost:5000/user/delete/'+id,{method:'DELETE'});
+    console.log(res.status);
+    const data = await res.json();
+    if(res.status===200){
+      fetchUserData();
+      toast.success(data.name+ ' Deleted Successfully 😎🍔')
+    }
+  }
 
   useEffect( () => {
     fetchUserData();
@@ -30,16 +42,17 @@ const ManageUser = () => {
           </thead>
           <tbody>
             {
-              userList.map( (user) => ( <tr>
+              userList.map( (user) => 
+              ( <tr>
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.age}</td>
                 <td>
-                  <button className='btn btn-primary'>Edit</button>
+                  <Link to={'/updateuser/'+user._id} className='btn btn-primary'>Edit</Link>
                 </td>
                 <td>
-                  <button className='btn btn-danger'>Delete</button>
+                  <button onClick={ () => { deleteUser(user._id) }} className='btn btn-danger'>Delete</button>
                 </td>
               </tr> ) )
             }
