@@ -44,7 +44,7 @@ function App() {
             <Route element={ <ManageUser /> } path='manageuser' />
             <Route element={ <ManageProduct /> } path='manageproduct' />
             <Route element={ <AddProduct /> } path='addproduct' />
-            <Route element={ <UpdateUser /> } path='updateuser' />
+            <Route element={ <UpdateUser /> } path='updateuser/:id' />
   
 
           </Routes>
