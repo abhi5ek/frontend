@@ -16,17 +16,14 @@ import ManageProduct from './components/ManageProduct';
 import AddProduct from './components/AddProduct';
 import { Toaster } from 'react-hot-toast';
 import UpdateUser from './components/UpdateUser';
+import { UserProvider } from './UserContext';
 
 function App() {
   return (
     <div>
       <Toaster position='top-right' />
        <BrowserRouter>
-
-       {/* <Link to="/home">Home</Link> 
-       <Link to="/signup">Signup</Link> 
-       <Link to="/login">Login</Link>   */}
-
+       <UserProvider>
           <Navbar/>
 
           <Routes>  
@@ -48,6 +45,7 @@ function App() {
   
 
           </Routes>
+          </UserProvider>
        </BrowserRouter>
      
     </div>
