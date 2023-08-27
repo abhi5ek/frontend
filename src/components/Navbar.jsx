@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import useUserContext from '../UserContext';
 
+
+
 const Navbar = () => {
   
   const [currentUser, setCurrentUser] = useState(
@@ -12,12 +14,21 @@ const Navbar = () => {
 
   const showLoginOptions = () => {
     if(currentUser!==null || loggedIn ){
-      return <li className="nav-item">
+      return (
+              <>
+              <li className="nav-item">
               <button className="btn btn-danger" onClick={logout}>
                  Logout
               </button>
               </li>
               
+              <li className="nav-item">
+              <NavLink className="nav-link" to="/profile">
+                 Profile
+              </NavLink>
+              </li>
+              </>
+      )
     }else{
       return <>
        <li className="nav-item">

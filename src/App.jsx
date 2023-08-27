@@ -17,6 +17,8 @@ import AddProduct from './components/AddProduct';
 import { Toaster } from 'react-hot-toast';
 import UpdateUser from './components/UpdateUser';
 import { UserProvider } from './UserContext';
+import Profile from './components/Profile';
+import UserAuth from './components/UserAuth';
 
 function App() {
   return (
@@ -42,7 +44,7 @@ function App() {
             <Route element={ <ManageProduct /> } path='manageproduct' />
             <Route element={ <AddProduct /> } path='addproduct' />
             <Route element={ <UpdateUser /> } path='updateuser/:id' />
-  
+            <Route element={ <UserAuth> <Profile/> </UserAuth> } path='profile' />
 
           </Routes>
           </UserProvider>
